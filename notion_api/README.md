@@ -70,3 +70,18 @@ result[result['type']]['rich_text'][i]['text']['content']
 # 또는 읽기용
 result[result['type']]['rich_text'][i]['plain_text']
 ```
+
+## Test 결과들
+### 빈 블록 테스트
+빈 블록은 rich_text 배열 자체가 비어 있음.
+
+### rich_text에 배열이 나오는 경우
+같은 블록 내에 글의 형태 (bold, itaclic, 색)가 다르다면 여러 배열로 나옴
+
+### 블록 내에 긴 글
+긴 글의 형태가 모두 같다면 하나의 블록 내에 출력됨
+
+### next_cursor 테스트
+next_cursor값을 통해 API를 재호출하여 이어 받도록 코드 수정
+has_more가 true라면 'start_cursor'=next_cursor를 kwargs에 넣어 API 재호출
+이어진 답변을 results만 합쳐서 return
